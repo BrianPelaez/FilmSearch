@@ -1,13 +1,13 @@
 .detailsContainer{
     margin-top: 40px;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     flex-wrap: wrap;
 }
 
 .col {
-    max-width: 400px;
+    max-width: 600px;
     margin: 15px;
     height: auto;
     height: 80%;

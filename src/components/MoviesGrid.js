@@ -1,26 +1,51 @@
 import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { api } from "../helpers/httpClient";
+import Loader from "./Loader";
 import MovieCard from "./MovieCard";
 import styles from "./MovieGrid.module.css";
 
+function useQuery(){
+  return new URLSearchParams(useLocation().search)
+}
+
 const MoviesGrid = () => {
   const [movies, setMovies] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const query = useQuery();
+  const search = query.get('search');
 
   useEffect(() => {
+    setIsLoading(true);
+    let URL = '';
+
     const getData = async () => {
-      await api("discover/movie")
-        .then((data) => setMovies(data.results))
+      if (query.get('search') === null){
+        URL = "discover/movie?";
+      } else {
+        URL = `search/movie?query=${search}`;
+      }
+      await api(URL)
+        .then((data) => {
+          setMovies(data.results)
+          setIsLoading(false)
+        })
         .catch((err) => console.log(err));
     };
     getData();
-  }, []);
+  }, [search]);
 
-  return (
+  return (<>
+    {!isLoading? (
+    
     <ul className={styles.moviesGrid}>
+      
       {movies.map((el) => (
-        <MovieCard key={el.title} movie={el}></MovieCard>
+        <MovieCard key={el.id} movie={el}></MovieCard>
       ))}
-    </ul>
+    </ul>) : <Loader/> 
+  }</>
   );
 };
 

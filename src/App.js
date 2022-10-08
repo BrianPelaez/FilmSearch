@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 // Router React
 
@@ -14,7 +14,7 @@ function App() {
   return (
     <BrowserRouter>
       <header className="title">
-        <Link to="/">Pelispedia</Link>
+        <Link to="/"><h2>Pelispedia</h2></Link>
       </header>
       <main>
         <Routes>
