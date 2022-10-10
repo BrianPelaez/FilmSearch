@@ -1,7 +1,8 @@
 import React from 'react';
+import styles from './NotFound.module.css'
 
 const NotFound = () => {
-    return ( <>404</> );
+    return ( <div className={styles.empty}>Sin resultados</div> );
 }
  
 export default NotFound;

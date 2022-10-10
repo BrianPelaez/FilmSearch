@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { api } from "../helpers/httpClient";
 import Loader from "../components/Loader";
 import styles from "./MovieDetails.module.css";
+import { getMovieImg } from "../helpers/getMovieImg";
 
 export function MovieDetails() {
   const [movie, setMovie] = useState({});
@@ -24,7 +25,7 @@ export function MovieDetails() {
     getData();
   }, [movieId]);
 
-  const IMG_URL = "https://image.tmdb.org/t/p/w300/";
+  const IMG_URL = getMovieImg(movie.poster_path, 500)
 
   return (
     <>
@@ -34,7 +35,7 @@ export function MovieDetails() {
             className={`${styles.col} ${styles.movieImage}`}
             width={300}
             height={450}
-            src={IMG_URL + movie.poster_path}
+            src={IMG_URL}
             alt={movie.title}
           />
 

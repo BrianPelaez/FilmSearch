@@ -12,9 +12,13 @@
 }
 
 .movieImg{
+    display: block;
     border-radius: 15px;
+    width: 300px;
+    height: 450px ;
     background-color: azure;
     cursor: pointer;
+
 }
 
 @media screen and (max-width: 768px) {

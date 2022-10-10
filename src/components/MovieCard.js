@@ -1,9 +1,11 @@
 import React from "react";
 import {Link} from 'react-router-dom'
+import { getMovieImg } from "../helpers/getMovieImg";
 import styles from "./MovieCard.module.css";
 
+
 const MovieCard = ({ movie }) => {
-  const IMG_URL = "https://image.tmdb.org/t/p/w300/";
+  const IMG_URL = getMovieImg(movie.poster_path, 300)
 
   return (
     <>
@@ -13,7 +15,7 @@ const MovieCard = ({ movie }) => {
         className={styles.movieImg}
           width={300}
           height={450}
-          src={IMG_URL + movie.poster_path}
+          src={IMG_URL}
           alt={movie.title}
         />
         </Link>

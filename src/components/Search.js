@@ -1,20 +1,26 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useQuery } from "../hooks/useQuery"
 import styles from "./Search.module.css";
 
 const Search = () => {
-  const [searchText, setSearchText] = useState("");
+
+  const query = useQuery();
+  const search = query.get("search");
+
   let navigate = useNavigate(); //Permite cambiar de URL y enviar parametros 
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate(`/?search=${searchText}`); // Se detalla la ruta con la variable
-    setSearchText('');
   };
 
   const handleChange = (e) => {
     e.preventDefault();
-    setSearchText(e.target.value.toUpperCase());
+    if (e.target.value === ''){
+      navigate(`/`);
+    } else {
+      navigate(`/?search=${e.target.value}`);
+    }
+    
   };
 
   return (
@@ -27,12 +33,10 @@ const Search = () => {
         <input
           className={styles.searchInput}
           type="text"
-          value={searchText}
+          
+          placeholder="Search title..."
           onChange={(e) => handleChange(e)}
         />
-        <button className={styles.searchButton} type="submit" value="Search">
-          Buscar
-        </button>
       </div>
     </form>
   );
