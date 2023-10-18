@@ -38,7 +38,7 @@ const MoviesGrid = ({search}) => {
         .catch((err) => console.log(err));
     };
     getData();
-  }, [search, page]);
+  }, [search, page, movies]);
 
   if (!isLoading && movies.length === 0) {
     return <NotFound></NotFound>
