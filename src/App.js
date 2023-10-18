@@ -14,7 +14,7 @@ function App() {
   return (
     <BrowserRouter>
       <header className="title">
-        <Link to="/"><h2>Pelispedia</h2></Link>
+        <Link to="/"><h2>FilmSearch</h2></Link>
       </header>
       <main>
         <Routes>

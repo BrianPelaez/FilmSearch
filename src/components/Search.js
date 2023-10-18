@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import { useQuery } from "../hooks/useQuery"
+//import { useQuery } from "../hooks/useQuery"
 import styles from "./Search.module.css";
 
 const Search = () => {
 
-  const query = useQuery();
-  const search = query.get("search");
+  //const query = useQuery();
+  //const search = query.get("search");
 
   let navigate = useNavigate(); //Permite cambiar de URL y enviar parametros 
 
@@ -28,12 +28,13 @@ const Search = () => {
       className={styles.searchContainer}
       onSubmit={handleSubmit}
       method="POST"
+
     >
       <div className={styles.search}>
         <input
           className={styles.searchInput}
           type="text"
-          
+        
           placeholder="Search title..."
           onChange={(e) => handleChange(e)}
         />
